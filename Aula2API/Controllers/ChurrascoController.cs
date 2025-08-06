@@ -9,7 +9,7 @@ namespace Aula2API.Controllers
     public class ChurrascoController : ControllerBase
     {
         [HttpPost]
-        public ActionResult Post([FromBody]List<ConvidadoDTO> convidados)
+        public ActionResult Post([FromBody] List<ConvidadoDTO> convidados)
         {
             var totalConvidados = 0;
             double litrosBebida = 0;
@@ -20,9 +20,9 @@ namespace Aula2API.Controllers
 
             foreach (var convidado in convidados)
             {
-                if (convidado.Idade >=11)
+                if (convidado.Idade >= 11)
                 {
-                    if(convidado.Sexo == "Masculino")
+                    if (convidado.Sexo == "Masculino")
                     {
                         litrosBebida = litrosBebida + 1.200;
                         kilosCarne = kilosCarne + 400;
@@ -44,6 +44,21 @@ namespace Aula2API.Controllers
 
                 totalConvidados++;
             }
+
+            foreach (var convidado in convidados)
+            {
+                totalConvidados++;
+            }
+
+            //LINQ
+            //totalConvidados = convidados.Count();
+            //totalCriancas = convidados.Count(c => c.Idade <= 10);
+            //totalHomens = convidados.Count(h => h.Idade > 10 && h.Sexo == "Masculino");
+            //totalMulheres = convidados.Count(m => m.Idade > 10 && m.Sexo == "Feminino");
+            //var QtdeCarnePorHome = 0.200m;
+            //totalCarne = (totalCriancas * 0.200m) + (totalHomens * 0.400m) + (totalMulheres * 0.300m);
+            //toalBebida = (totalCriancas * 0.600m) + (totalHomens * 1.200m) + (totalMulheres * 1.000m);
+
 
             var resultado = new ChurrascoResultadoDTO
             {
